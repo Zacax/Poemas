@@ -1,0 +1,151 @@
+:root {
+    --bg-paper: #f5f2e7;
+    --ink: #2c2c2c;
+    --accent: #a33333;
+    --sidebar: #ede9d9;
+    --line-height: 2.5rem; /* Base para la alineación */
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', 'Georgia', serif;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 260px 1fr 100px;
+    height: 100vh;
+}
+
+/* Sidebar de Ideas */
+.sidebar-left {
+    background-color: var(--sidebar);
+    padding: 25px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-left h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.fragment-box {
+    background: rgba(255,255,255,0.4);
+    padding: 12px;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    min-height: 60px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.05);
+    font-style: italic;
+}
+
+/* Área del Poema */
+.main-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    overflow-y: auto;
+}
+
+.editor-wrapper {
+    width: 85%;
+    max-width: 650px;
+}
+
+.poem-title {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    outline: none;
+    font-family: inherit;
+}
+
+#editor {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    line-height: var(--line-height);
+    resize: none;
+    min-height: 80vh;
+    font-family: inherit;
+}
+
+/* Contador de Sílabas */
+.sidebar-right {
+    padding-top: 205px; /* Ajuste para alinear con el primer verso */
+    background: rgba(0,0,0,0.01);
+    border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+.metric-line {
+    height: var(--line-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+/* Añade esto a tu archivo style.css */
+#btn-nuevo {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+}
+
+#btn-nuevo:hover { opacity: 0.8; }
+
+#lista-poemas {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-poema {
+    padding: 8px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-poema:hover { background: rgba(255,255,255,0.6); }
+.item-poema.activo { 
+    border-left: 3px solid var(--accent); 
+    background: white; 
+}
+
+.helper-text {
+    margin-top: auto;
+    font-size: 0.75rem;
+    color: #888;
+    line-height: 1.4;
+}

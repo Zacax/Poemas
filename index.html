@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoetStudio | Taller de Versos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Panel Izquierdo: Ideas sueltas -->
+    <aside class="sidebar-left">
+        <button id="btn-nuevo" onclick="nuevoPoema()">+ Nuevo Poema</button>
+        <h3>Mi Biblioteca</h3>
+        <div id="lista-poemas">
+            </div>
+        
+        <div class="helper-text">
+            <button onclick="descargarPoema()" style="width:100%; margin-bottom:10px;">💾 Exportar .txt</button>
+            <p>Los poemas se guardan en tu navegador automáticamente.</p>
+        </div>
+    </aside>
+
+    <!-- Centro: El Lienzo de Escritura -->
+    <main class="main-editor">
+        <div class="editor-wrapper">
+            <input type="text" id="title" class="poem-title" placeholder="Título del poema">
+            <textarea id="editor" placeholder="Empieza a escribir tu verso..."></textarea>
+        </div>
+    </main>
+
+    <!-- Panel Derecho: Contador métrico -->
+    <aside class="sidebar-right" id="metric-sidebar">
+        <!-- Los números se generan dinámicamente -->
+    </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
