@@ -149,3 +149,84 @@ body {
     color: #888;
     line-height: 1.4;
 }
+
+/* --- ESTILOS BASE (Se mantienen los anteriores y añadimos estos) --- */
+
+:root {
+    --line-height: 2.5rem;
+}
+
+/* Botón flotante oculto en PC */
+#mobile-menu-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #a33333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- DISEÑO PARA MÓVIL --- */
+@media (max-width: 768px) {
+    #mobile-menu-btn { display: block; }
+
+    .app-container {
+        display: block; /* Ya no es Grid de 3 columnas */
+        height: 100vh;
+        position: relative;
+    }
+
+    /* Biblioteca: Ahora es un panel lateral que sale de la izquierda */
+    .sidebar-left {
+        position: fixed;
+        left: -280px; /* Escondida a la izquierda */
+        top: 0;
+        width: 260px;
+        height: 100%;
+        z-index: 999;
+        transition: 0.3s;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .sidebar-left.open {
+        left: 0; /* Al abrirse, aparece */
+    }
+
+    /* Editor: Ocupa todo el ancho */
+    .main-editor {
+        padding: 20px 10px;
+        width: 100%;
+    }
+
+    .editor-wrapper {
+        width: 90%;
+    }
+
+    #editor {
+        font-size: 1.1rem;
+        line-height: var(--line-height);
+    }
+
+    /* Métrica: En móvil la pegamos al borde derecho para que no estorbe */
+    .sidebar-right {
+        position: absolute;
+        right: 5px;
+        top: 135px; /* Ajusta según tu título */
+        width: 30px;
+        border: none;
+        background: transparent;
+        pointer-events: none; /* Que no bloquee el click en el texto */
+    }
+
+    .metric-line {
+        font-size: 0.8rem;
+        justify-content: flex-end;
+    }
+}

@@ -159,3 +159,18 @@ function getAccentModifier(word) {
 // --- 7. EVENTOS ---
 editor.addEventListener('input', processPoem);
 titleInput.addEventListener('input', processPoem);
+
+// Función para abrir/cerrar la biblioteca en móvil
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar-left');
+    sidebar.classList.toggle('open');
+}
+
+// Cerrar la biblioteca automáticamente al elegir un poema (en móvil)
+const originalCargarPoemaLocal = cargarPoemaLocal;
+cargarPoemaLocal = async (id) => {
+    await originalCargarPoemaLocal(id);
+    if (window.innerWidth <= 768) {
+        toggleSidebar(); // Cierra el menú al cargar el poema
+    }
+};
