@@ -183,20 +183,32 @@ body {
         position: relative;
     }
 
-    /* Biblioteca: Ahora es un panel lateral que sale de la izquierda */
     .sidebar-left {
         position: fixed;
-        left: -280px; /* Escondida a la izquierda */
         top: 0;
-        width: 260px;
+        left: 0;
+        width: 280px; /* Ancho fijo */
         height: 100%;
-        z-index: 999;
-        transition: 0.3s;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        background-color: #f5f2e7; /* Asegúrate que tenga fondo sólido */
+        transition: transform 0.3s ease-in-out;
+        
+        /* LA CLAVE: Lo desplazamos al 100% de su propio ancho hacia la izquierda */
+        transform: translateX(-100%); 
+        
+        box-shadow: none;
+        border-right: 1px solid rgba(0,0,0,0.1);
     }
 
+    /* Cuando tiene la clase 'open', vuelve a su posición original */
     .sidebar-left.open {
-        left: 0; /* Al abrirse, aparece */
+        transform: translateX(0);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    }
+
+    /* Opcional: Evitar que el cuerpo se mueva cuando el menú está abierto */
+    body.menu-open {
+        overflow: hidden;
     }
 
     /* Editor: Ocupa todo el ancho */

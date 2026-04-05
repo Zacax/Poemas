@@ -160,17 +160,28 @@ function getAccentModifier(word) {
 editor.addEventListener('input', processPoem);
 titleInput.addEventListener('input', processPoem);
 
-// Función para abrir/cerrar la biblioteca en móvil
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar-left');
     sidebar.classList.toggle('open');
+    
+    // Opcional: Añade una clase al body para bloquear el scroll
+    document.body.classList.toggle('menu-open');
 }
 
-// Cerrar la biblioteca automáticamente al elegir un poema (en móvil)
+// Cerrar el menú si el usuario toca el editor (el lienzo de escritura)
+editor.addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar-left');
+    if (sidebar.classList.contains('open')) {
+        toggleSidebar();
+    }
+});
+
+// Asegúrate de que cargarPoemaLocal también lo cierre
 const originalCargarPoemaLocal = cargarPoemaLocal;
 cargarPoemaLocal = async (id) => {
     await originalCargarPoemaLocal(id);
-    if (window.innerWidth <= 768) {
-        toggleSidebar(); // Cierra el menú al cargar el poema
+    const sidebar = document.getElementById('sidebar-left');
+    if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+        toggleSidebar();
     }
 };
